@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>409397616142-7pkastugpkh70cme1gnit5qe070mposp.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.409397616142-7pkastugpkh70cme1gnit5qe070mposp</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>409397616142-h9hnuo9affblmoaet8d3did32dp4g2re.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA9Vq82qU1mLGDa2Vo-U1MHcId-gsIRzoY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>409397616142</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.healthTracker.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>health-tracker-55272</string>
+	<key>STORAGE_BUCKET</key>
+	<string>health-tracker-55272.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:409397616142:ios:b5d1e41e05abdfb902e65f</string>
+</dict>
+</plist>
