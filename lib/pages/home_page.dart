@@ -82,27 +82,32 @@ body: Stack(
         child: const Text("Logout"),
       ),
     ),
-    Align(
-      alignment: Alignment.center, // position the grid of cards in the center of the screen
+    
+      Align(
+      alignment: Alignment.center,
       child: ValueListenableBuilder<List<BloodGlucose>>(
         valueListenable: controller.bloodGlucoses,
         builder: (context, bloodGlucoses, child) {
+          // Use `take` to limit the number of values to be displayed
+          List<BloodGlucose> displayedData = bloodGlucoses.take(1).toList();
+          
           return GridView.builder(
             padding: const EdgeInsets.all(15),
-            itemCount: bloodGlucoses.length,
+            itemCount: displayedData.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               childAspectRatio: 1,
-              mainAxisSpacing: 15,
+              mainAxisSpacing: 60,
               crossAxisSpacing: 15,
             ),
             itemBuilder: (context, index) {
-              return MyCard(bloodGlucose: bloodGlucoses[index]);
+              return MyCard(bloodGlucose: displayedData[index]);
             },
           );
         },
       ),
     ),
+
     Positioned(
       bottom: 0, // reduce the bottom margin of the bottom row of icon buttons
       child: Container(

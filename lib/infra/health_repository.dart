@@ -7,14 +7,20 @@ class HealthRepository {
   Future<List<BloodGlucose>> getBloodGlucose() async {
     bool requested =
         await health.requestAuthorization([HealthDataType.BLOOD_GLUCOSE]);
-    
-    if (requested) {
-      List<HealthDataPoint> healthData = await health.getHealthDataFromTypes(
-          DateTime.now().subtract(const Duration(days: 7)),
-          DateTime.now(),
-          [HealthDataType.BLOOD_GLUCOSE]);
 
-          print("Health data: $healthData");
+    if (requested) {
+      // Specify the start and end time for the desired one-day range
+      DateTime startTime = DateTime.now().subtract(const Duration(days: 1));
+      DateTime endTime = DateTime.now();
+
+      // Fetch blood glucose data for the specified time range
+      List<HealthDataPoint> healthData = await health.getHealthDataFromTypes(
+        startTime,
+        endTime,
+        [HealthDataType.BLOOD_GLUCOSE],
+      );
+
+      //print("Health data: $healthData");
 
       return healthData.map((e) {
         var b = e;
