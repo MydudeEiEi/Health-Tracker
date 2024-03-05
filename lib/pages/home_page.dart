@@ -121,11 +121,11 @@ body: Stack(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _buildIconButton('lib/images/dish.png'),
+            _buildIconButton('lib/assets/images/icons/dish.png'),
             const SizedBox(width: 51),
-            _buildGradientIconButton('lib/images/home_btn.png'),
+            _buildGradientIconButton('lib/assets/images/icons/home.png'),
             const SizedBox(width: 51),
-            _buildIconButton('lib/images/dumbbell.png'),
+            _buildIconButton('lib/assets/images/icons/dumbbell.png'),
           ],
         ),
       ),

@@ -2,7 +2,7 @@
     package="com.Health_Tracker">
     
     <application
-        android:label="health_tracker"
+        android:label="Health Tracker"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:enableOnBackInvokedCallback="true">
