@@ -9,6 +9,7 @@ enum NutritionCardType {
   sodium,
 }
 
+// ignore: must_be_immutable
 class NutritionCard extends StatelessWidget {
   Color _backgroundColor;
   String _iconName;
@@ -53,7 +54,7 @@ class NutritionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(7.0),
-      child: Container(
+      child: Ink(
           // margin: const EdgeInsets.all(5),
           decoration: BoxDecoration(
               color: _backgroundColor,
@@ -74,6 +75,7 @@ class NutritionCard extends StatelessWidget {
                     color: Colors.black.withOpacity(.1)),
               ]),
           child: InkWell(
+            borderRadius: BorderRadius.circular(20),
             onTap: () {},
             child: AspectRatio(
                 aspectRatio: 1.0,
