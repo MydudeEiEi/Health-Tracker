@@ -11,9 +11,10 @@ IconButton buildIconWithAction(String iconName, Function() onPress,
       onPressed: onPress);
 }
 
-ImageIcon buildIcon(String iconName, {double size = 30}) {
+ImageIcon buildIcon(String iconName, {double size = 30, Color color = Colors.black}) {
   return ImageIcon(
     AssetImage('lib/assets/images/icons/$iconName.png'),
     size: size,
+    color: color,
   );
 }

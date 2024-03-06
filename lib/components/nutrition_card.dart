@@ -1,0 +1,101 @@
+import 'package:flutter/material.dart';
+import 'package:health_tracker/utils/icon.dart';
+import 'package:health_tracker/utils/style.dart';
+
+enum NutritionCardType {
+  fat,
+  carbohydeate,
+  protein,
+  sodium,
+}
+
+class NutritionCard extends StatelessWidget {
+  Color _backgroundColor;
+  String _iconName;
+  String _cardLable;
+  String _cardDetail;
+
+  NutritionCard(NutritionCardType cardType, {Key? key})
+      : _backgroundColor = Colors.grey[100]!,
+        _iconName = "",
+        _cardLable = "",
+        _cardDetail = "",
+        super(key: key) {
+    switch (cardType) {
+      case NutritionCardType.fat:
+        _backgroundColor = MyColors.fatCard;
+        _iconName = "fat";
+        _cardLable = "FAT";
+        _cardDetail = "500 kcal";
+        break;
+      case NutritionCardType.carbohydeate:
+        _backgroundColor = MyColors.carbohydeateCard;
+        _iconName = "wheet";
+        _cardLable = "CARBOHYDEATE";
+        _cardDetail = "500 G";
+        break;
+      case NutritionCardType.protein:
+        _backgroundColor = MyColors.proteinCard;
+        _iconName = "protein";
+        _cardLable = "PROTEIN";
+        _cardDetail = "500 G";
+        break;
+      case NutritionCardType.sodium:
+        _backgroundColor = MyColors.sodiumCard;
+        _iconName = "sodium";
+        _cardLable = "SODIUM";
+        _cardDetail = "500 MG";
+        break;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(7.0),
+      child: Container(
+          // margin: const EdgeInsets.all(5),
+          decoration: BoxDecoration(
+              color: _backgroundColor,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                    offset: const Offset(0.0, 3.0),
+                    blurRadius: 1.0,
+                    spreadRadius: -2.0,
+                    color: Colors.black.withOpacity(.1)),
+                BoxShadow(
+                    offset: const Offset(0.0, 2.0),
+                    blurRadius: 2.0,
+                    color: Colors.black.withOpacity(.1)),
+                BoxShadow(
+                    offset: const Offset(0.0, 1.0),
+                    blurRadius: 5.0,
+                    color: Colors.black.withOpacity(.1)),
+              ]),
+          child: InkWell(
+            onTap: () {},
+            child: AspectRatio(
+                aspectRatio: 1.0,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: buildIcon(_iconName, size: 70),
+                    ),
+                    Text(
+                      _cardDetail,
+                      style: MyTextStyle.title(
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      _cardLable,
+                      style: MyTextStyle.title(color: Colors.white),
+                    ),
+                  ],
+                )),
+          )),
+    );
+  }
+}
