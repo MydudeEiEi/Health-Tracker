@@ -37,44 +37,41 @@ class UserController {
     CollectionReference users = FirebaseFirestore.instance.collection('users');
 
     // Save the user's email and uid to Firestore using their uid as the document id
-    users.doc(uid).set({
-      'email': email,
-      'uid': uid,
-    })
-    .then((value) => print("User added"))
-    .catchError((error) => print("Failed to add user: $error"));
+    users
+        .doc(uid)
+        .set({
+          'email': email,
+          'uid': uid,
+        })
+        .then((value) => print("User added"))
+        .catchError((error) => print("Failed to add user: $error"));
   }
 
+  static Future<bool> signOutConfirmation(BuildContext? context) async {
+    if (context == null) return false;
 
-static Future<bool> signOutConfirmation(BuildContext? context) async {
-  if (context == null) return false;
+    final confirmed = await showDialog<bool>(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Logout Confirmation"),
+            content: Text("Do you want to logout?"),
+            actions: [
+              TextButton(
+                  onPressed: () => Navigator.of(context).pop(false),
+                  child: Text("No")),
+              TextButton(
+                  onPressed: () => Navigator.of(context).pop(true),
+                  child: Text("Yes")),
+            ],
+          );
+        });
 
-  final confirmed = await showDialog<bool>(
-    context: context,
-    builder: (context) {
-      return AlertDialog(
-        title: Text("Logout Confirmation"),
-        content: Text("Do you want to logout?"),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(false), 
-            child: Text("No")
-          ),
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(true),
-            child: Text("Yes") 
-          ),
-        ],
-      );
-    }
-  );
+    return confirmed ?? false;
+  }
 
-  return confirmed ?? false;
-}
-
-static Future<void> signOut() async {
-  await FirebaseAuth.instance.signOut();
-  await GoogleSignIn().signOut();
-}
-
+  static Future<void> signOut() async {
+    await FirebaseAuth.instance.signOut();
+    await GoogleSignIn().signOut();
+  }
 }

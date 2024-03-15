@@ -49,6 +49,8 @@ dependencies:
   provider: ^6.1.1
   health: ^9.0.1
   permission_handler: ^11.3.0
+  firebase_storage: ^11.6.10
+  percent_indicator: ^4.2.3
 
 dev_dependencies:
   flutter_test:

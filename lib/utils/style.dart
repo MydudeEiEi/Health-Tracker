@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class MyColors {
@@ -12,6 +10,8 @@ class MyColors {
   static const Color carbohydeateCard = Color(0xFF7CD671);
   static const Color proteinCard = Color(0xFFC0482D);
   static const Color sodiumCard = Color(0xFFBDB193);
+
+  static const Color menuCard = Color(0xFFE9DAB5);
 
   static const LinearGradient redOrange = LinearGradient(colors: [
     Color.fromRGBO(253, 55, 31, 1),
@@ -30,6 +30,8 @@ class MyTextStyle {
           {Color color = const Color.fromRGBO(97, 97, 97, 1),
           FontWeight fontWeight = FontWeight.w500}) =>
       TextStyle(fontSize: 14, fontWeight: fontWeight, color: color);
-  static TextStyle body({Color color = Colors.black}) =>
-      TextStyle(fontSize: 14, fontWeight: FontWeight.normal, color: color);
+  static TextStyle body(
+          {Color color = Colors.black,
+          FontWeight fontWeight = FontWeight.normal}) =>
+      TextStyle(fontSize: 14, fontWeight: fontWeight, color: color);
 }

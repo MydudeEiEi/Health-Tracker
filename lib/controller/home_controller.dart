@@ -1,7 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
-import 'package:health/health.dart';
-import 'package:health_tracker/infra/health_repository.dart';
+import 'package:health_tracker/repository/health_repository.dart';
 import 'package:health_tracker/models/blood_glucose.dart';
 
 class HomeController {
