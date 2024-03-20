@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/controller/user_controller.dart';
-import 'package:health_tracker/pages/home_page.dart';
+import 'package:health_tracker/pages/main_page.dart';
 import 'package:iconly/iconly.dart';
 
 class LoginPage extends StatelessWidget {
@@ -10,7 +10,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 206, 173, 102),
+      backgroundColor: const Color.fromARGB(255, 206, 173, 102),
       body: SafeArea(
         child: Center(
           child: Column(
@@ -67,7 +67,8 @@ class LoginPage extends StatelessWidget {
                     final user = await UserController.loginWithGoogle();
                     if (user != null && context.mounted) {
                       Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => HomePage()),
+                        MaterialPageRoute(
+                            builder: (context) => const MainPage()),
                       );
                     }
                   } on FirebaseAuthException catch (error) {
@@ -95,7 +96,6 @@ class LoginPage extends StatelessWidget {
               ),
 
               const SizedBox(height: 20),
-
             ],
           ),
         ),

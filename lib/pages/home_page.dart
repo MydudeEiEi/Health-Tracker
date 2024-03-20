@@ -139,14 +139,14 @@ class _HomePageState extends State<HomePage> {
           SizedBox(height: screenHight * .025),
           Row(
             children: [
-              Expanded(child: NutritionCard(NutritionCardType.fat)),
-              Expanded(child: NutritionCard(NutritionCardType.carbohydeate)),
+              Expanded(child: NutritionCard(NutritionCardType.fat, () => {})),
+              Expanded(child: NutritionCard(NutritionCardType.carbohydeate, () => {})),
             ],
           ),
           Row(
             children: [
-              Expanded(child: NutritionCard(NutritionCardType.protein)),
-              Expanded(child: NutritionCard(NutritionCardType.sodium)),
+              Expanded(child: NutritionCard(NutritionCardType.protein, () => {})),
+              Expanded(child: NutritionCard(NutritionCardType.sodium, () => {})),
             ],
           ),
           SizedBox(height: screenHight * .02),

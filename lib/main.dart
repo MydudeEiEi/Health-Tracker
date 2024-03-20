@@ -6,7 +6,6 @@ import 'package:health_tracker/firebase_options.dart';
 import 'package:health_tracker/pages/main_page.dart';
 import 'pages/login_page.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
         colorSchemeSeed: Colors.deepOrange,
         textTheme: GoogleFonts.montserratTextTheme(),
       ),
-      home: UserController.user != null ? const MainPage() :  const LoginPage(),
+      home: UserController.user != null ? const MainPage() : const LoginPage(),
     );
   }
 }

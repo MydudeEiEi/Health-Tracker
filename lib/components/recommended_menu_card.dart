@@ -30,15 +30,16 @@ class RecommendedMenuCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
       child: Center(
-          child: Container(
+          child: Ink(
               decoration: const BoxDecoration(
                   color: MyColors.menuCard,
                   borderRadius: BorderRadius.all(Radius.circular(20))),
               width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: InkWell(
-                  onTap: onTap,
+              child: InkWell(
+                onTap: onTap,
+                borderRadius: BorderRadius.circular(20),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [

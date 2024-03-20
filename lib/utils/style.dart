@@ -13,6 +13,8 @@ class MyColors {
 
   static const Color menuCard = Color(0xFFE9DAB5);
 
+  static const Color correct = Color(0xFF7CD671);
+
   static const LinearGradient redOrange = LinearGradient(colors: [
     Color.fromRGBO(253, 55, 31, 1),
     Color.fromRGBO(255, 132, 75, 1),

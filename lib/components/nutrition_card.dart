@@ -15,12 +15,14 @@ class NutritionCard extends StatelessWidget {
   String _iconName;
   String _cardLable;
   String _cardDetail;
+  Function() onTap;
 
-  NutritionCard(NutritionCardType cardType, {Key? key})
+  NutritionCard(NutritionCardType cardType, Function() ontap, {Key? key})
       : _backgroundColor = Colors.grey[100]!,
         _iconName = "",
         _cardLable = "",
         _cardDetail = "",
+        onTap = ontap,
         super(key: key) {
     switch (cardType) {
       case NutritionCardType.fat:
@@ -76,7 +78,7 @@ class NutritionCard extends StatelessWidget {
               ]),
           child: InkWell(
             borderRadius: BorderRadius.circular(20),
-            onTap: () {},
+            onTap: onTap,
             child: AspectRatio(
                 aspectRatio: 1.0,
                 child: Column(
