@@ -32,8 +32,10 @@ class _FoodPageState extends State<FoodPage> {
                         builder: (BuildContext context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
-                            return const CircularProgressIndicator(
-                              color: Colors.blue,
+                            return const Center(
+                              child: CircularProgressIndicator(
+                                color: Colors.blue,
+                              ),
                             );
                           } else if (snapshot.hasError || !snapshot.hasData) {
                             // โหลดรูปไม่ได้จะให้แสดงอะไร
@@ -64,7 +66,8 @@ class _FoodPageState extends State<FoodPage> {
 
     return Padding(
       padding: EdgeInsets.only(
-        left: screenWidth * .025, right: screenWidth * .025,
+        left: screenWidth * .025,
+        right: screenWidth * .025,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,

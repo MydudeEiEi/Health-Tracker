@@ -12,8 +12,10 @@ class MyColors {
   static const Color sodiumCard = Color(0xFFBDB193);
 
   static const Color menuCard = Color(0xFFE9DAB5);
+  static const Color activityCard = Color(0xFF1D0956);
 
   static const Color correct = Color(0xFF7CD671);
+  static const Color wrong = Color(0xFFFF4444);
 
   static const LinearGradient redOrange = LinearGradient(colors: [
     Color.fromRGBO(253, 55, 31, 1),

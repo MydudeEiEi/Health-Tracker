@@ -61,6 +61,20 @@ class RecommendedMenuCard extends StatelessWidget {
                           child: Image.network(
                             imagePath,
                             fit: BoxFit.fitWidth,
+                            frameBuilder: (context, child, frame,
+                                wasSynchronouslyLoaded) {
+                              return child;
+                            },
+                            loadingBuilder: (context, child, loadingProgress) {
+                              if (loadingProgress == null) {
+                                return child;
+                              }
+                              return const Center(
+                                child: CircularProgressIndicator(
+                                  color: Colors.blue,
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ),

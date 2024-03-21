@@ -6,8 +6,6 @@ import 'package:health_tracker/utils/style.dart';
 class WaterDropButton extends StatelessWidget {
   const WaterDropButton({Key? key}) : super(key: key);
 
-  void _onTapWaterDrop() {}
-
   @override
   Widget build(BuildContext context) {
     return OpenContainer(

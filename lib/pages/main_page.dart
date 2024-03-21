@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:health_tracker/components/water_drop_button.dart';
 import 'package:health_tracker/controller/user_controller.dart';
 import 'package:health_tracker/pages/food_page.dart';
+import 'package:health_tracker/pages/gym_page.dart';
 import 'package:health_tracker/pages/home_page.dart';
 import 'package:health_tracker/utils/icon.dart';
 import 'package:health_tracker/utils/style.dart';
@@ -23,7 +24,7 @@ class _MainPageState extends State<MainPage> {
   final List<Widget> _pages = const [
     FoodPage(),
     HomePage(),
-    Text('Gym'),
+    GymPage(),
   ];
 
   void _onTapNavigationBar(int index) {
