@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/utils/icon.dart';
 import 'package:health_tracker/utils/style.dart';
@@ -15,14 +16,13 @@ class NutritionCard extends StatelessWidget {
   String _iconName;
   String _cardLable;
   String _cardDetail;
-  Function() onTap;
+  Widget nextPage;
 
-  NutritionCard(NutritionCardType cardType, Function() ontap, {Key? key})
+  NutritionCard(NutritionCardType cardType, this.nextPage, {Key? key})
       : _backgroundColor = Colors.grey[100]!,
         _iconName = "",
         _cardLable = "",
         _cardDetail = "",
-        onTap = ontap,
         super(key: key) {
     switch (cardType) {
       case NutritionCardType.fat:
@@ -56,8 +56,11 @@ class NutritionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(7.0),
-      child: Ink(
-          // margin: const EdgeInsets.all(5),
+      child: OpenContainer(
+        openBuilder: (context, action) => nextPage,
+        closedShape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        closedBuilder: (context, action) => Container(
           decoration: BoxDecoration(
               color: _backgroundColor,
               borderRadius: BorderRadius.circular(20),
@@ -76,30 +79,28 @@ class NutritionCard extends StatelessWidget {
                     blurRadius: 5.0,
                     color: Colors.black.withOpacity(.1)),
               ]),
-          child: InkWell(
-            borderRadius: BorderRadius.circular(20),
-            onTap: onTap,
-            child: AspectRatio(
-                aspectRatio: 1.0,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: buildIcon(_iconName, size: 70),
+          child: AspectRatio(
+              aspectRatio: 1.0,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: buildIcon(_iconName, size: 70),
+                  ),
+                  Text(
+                    _cardDetail,
+                    style: MyTextStyle.title(
+                      color: Colors.white,
                     ),
-                    Text(
-                      _cardDetail,
-                      style: MyTextStyle.title(
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text(
-                      _cardLable,
-                      style: MyTextStyle.title(color: Colors.white),
-                    ),
-                  ],
-                )),
-          )),
+                  ),
+                  Text(
+                    _cardLable,
+                    style: MyTextStyle.title(color: Colors.white),
+                  ),
+                ],
+              )),
+        ),
+      ),
     );
   }
 }

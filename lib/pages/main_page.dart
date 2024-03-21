@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:health_tracker/controller/user_controller.dart';
 import 'package:health_tracker/pages/food_page.dart';
 import 'package:health_tracker/pages/home_page.dart';

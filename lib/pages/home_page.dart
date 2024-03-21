@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:health_tracker/components/nutrition_card.dart';
+import 'package:health_tracker/components/recommended_menu_card.dart';
 import 'package:health_tracker/controller/home_controller.dart';
+import 'package:health_tracker/pages/nutrition_page.dart';
 import 'package:health_tracker/utils/icon.dart';
 import 'package:health_tracker/utils/style.dart';
 
@@ -139,14 +141,22 @@ class _HomePageState extends State<HomePage> {
           SizedBox(height: screenHight * .025),
           Row(
             children: [
-              Expanded(child: NutritionCard(NutritionCardType.fat, () => {})),
-              Expanded(child: NutritionCard(NutritionCardType.carbohydeate, () => {})),
+              Expanded(
+                  child: NutritionCard(
+                      NutritionCardType.fat, NutritionPage(NutritionType.fat))),
+              Expanded(
+                  child: NutritionCard(NutritionCardType.carbohydeate,
+                      NutritionPage(NutritionType.carbohydeate))),
             ],
           ),
           Row(
             children: [
-              Expanded(child: NutritionCard(NutritionCardType.protein, () => {})),
-              Expanded(child: NutritionCard(NutritionCardType.sodium, () => {})),
+              Expanded(
+                  child: NutritionCard(NutritionCardType.protein,
+                      NutritionPage(NutritionType.protein))),
+              Expanded(
+                  child: NutritionCard(NutritionCardType.sodium,
+                      NutritionPage(NutritionType.sodium))),
             ],
           ),
           SizedBox(height: screenHight * .02),
