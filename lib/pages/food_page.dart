@@ -65,7 +65,6 @@ class _FoodPageState extends State<FoodPage> {
     return Padding(
       padding: EdgeInsets.only(
         left: screenWidth * .025, right: screenWidth * .025,
-        // top: 150
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,

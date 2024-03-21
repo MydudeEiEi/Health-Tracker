@@ -22,16 +22,6 @@ class _HomePageState extends State<HomePage> {
     final double screenHight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-        // floatingActionButton: Column(
-        //   mainAxisSize: MainAxisSize.min,
-        //   children: [
-        //     const SizedBox(height: 16),
-        //     FloatingActionButton(
-        //       onPressed: () => controller.getData(),
-        //       child: const Icon(Icons.refresh),
-        //     )
-        //   ],
-        // ),
         body: Container(
       margin: EdgeInsets.symmetric(horizontal: screenWidth * .025),
       child: Column(

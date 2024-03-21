@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 enum SnackBarType { success, error, info }
 
-SnackBar mySnackBar(SnackBarType type, String message) {
+SnackBar mySnackBar(SnackBarType type, String message,
+    {TextStyle textStyle = const TextStyle(color: Colors.black)}) {
   Color color;
 
   switch (type) {
@@ -18,8 +19,8 @@ SnackBar mySnackBar(SnackBarType type, String message) {
   }
 
   return SnackBar(
-    content: Text(message, style: const TextStyle(color: Colors.black)),
-    duration: const Duration(seconds: 1, microseconds: 500),
+    content: Text(message, style: textStyle),
+    duration: const Duration(seconds: 3, microseconds: 500),
     behavior: SnackBarBehavior.floating,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(5),

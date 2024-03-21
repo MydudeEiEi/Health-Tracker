@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:health_tracker/components/water_drop_button.dart';
 import 'package:health_tracker/controller/user_controller.dart';
 import 'package:health_tracker/pages/food_page.dart';
 import 'package:health_tracker/pages/home_page.dart';
@@ -76,27 +77,7 @@ class _MainPageState extends State<MainPage> {
                     ],
                   ),
                   const Spacer(),
-                  Ink(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey, width: 1),
-                      color: Colors.transparent,
-                      shape: BoxShape.circle,
-                    ),
-                    child: InkWell(
-                      //This keeps the splash effect within the circle
-                      borderRadius: BorderRadius.circular(
-                          1000.0), //Something large to ensure a circle
-                      onTap: _onTapWaterDrop,
-                      child: const Padding(
-                        padding: EdgeInsets.all(6),
-                        child: Icon(
-                          Icons.water_drop_rounded,
-                          size: 26,
-                          color: MyColors.blueWaterDrop,
-                        ),
-                      ),
-                    ),
-                  ),
+                  const WaterDropButton(),
                   SizedBox(width: screenWidth * .025),
                   Ink(
                     decoration: BoxDecoration(
@@ -107,7 +88,7 @@ class _MainPageState extends State<MainPage> {
                     child: InkWell(
                       //This keeps the splash effect within the circle
                       borderRadius: BorderRadius.circular(
-                          1000.0), //Something large to ensure a circle
+                          25.0), //Something large to ensure a circle
                       onTap: _onTapCalendar,
                       child: const Padding(
                         padding: EdgeInsets.all(6),
