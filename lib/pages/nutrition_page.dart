@@ -56,10 +56,6 @@ class _NutritionPageState extends State<NutritionPage> {
     });
   }
 
-  void _onTapWaterDrop() {}
-
-  void _onTapCalendar() {}
-
   @override
   Widget build(BuildContext context) {
     final double topScreenMargin = MediaQuery.of(context).viewPadding.top;
@@ -99,27 +95,6 @@ class _NutritionPageState extends State<NutritionPage> {
                   const Spacer(),
                   const WaterDropButton(),
                   SizedBox(width: screenWidth * .025),
-                  Ink(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey, width: 1),
-                      color: Colors.transparent,
-                      shape: BoxShape.circle,
-                    ),
-                    child: InkWell(
-                      //This keeps the splash effect within the circle
-                      borderRadius: BorderRadius.circular(
-                          1000.0), //Something large to ensure a circle
-                      onTap: _onTapCalendar,
-                      child: const Padding(
-                        padding: EdgeInsets.all(6),
-                        child: Icon(
-                          Icons.calendar_month_outlined,
-                          size: 26,
-                          color: MyColors.redCalendar,
-                        ),
-                      ),
-                    ),
-                  )
                 ],
               ),
             ),

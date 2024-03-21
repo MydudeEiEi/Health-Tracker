@@ -16,6 +16,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int _currentIndex = 1;
+  DateTime _selectedDate = DateTime.now();
   final int _fadeDuration = 150;
   final double _iconBackgroundPadding = 11.5;
 
@@ -31,9 +32,9 @@ class _MainPageState extends State<MainPage> {
     });
   }
 
-  void _onTapWaterDrop() {}
-
-  void _onTapCalendar() {}
+  Future<void> _onTapCalendar() async {
+    _selectedDate = await showMyDatePicker() ?? _selectedDate;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -160,5 +161,22 @@ class _MainPageState extends State<MainPage> {
         elevation: 30,
       ),
     );
+  }
+
+  Future<DateTime?> showMyDatePicker() async {
+    return await showDatePicker(
+        context: context,
+        firstDate: DateTime(2000),
+        lastDate: DateTime(2100),
+        initialDate: DateTime.now(),
+        builder: (context, child) => Theme(
+            data: ThemeData.light().copyWith(
+              primaryColor: const Color.fromARGB(255, 93, 144, 255),
+              colorScheme: const ColorScheme.light(
+                  primary: Color.fromARGB(255, 93, 144, 255)),
+              buttonTheme:
+                  const ButtonThemeData(textTheme: ButtonTextTheme.primary),
+            ),
+            child: child!));
   }
 }
