@@ -307,7 +307,6 @@ class _GymPageState extends State<GymPage> {
   Widget timerPage(int index) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final setTime = _timerSeconds;
-    
 
     return Padding(
       padding:
@@ -397,8 +396,6 @@ class _GymPageState extends State<GymPage> {
                                   }
                                   _timerSeconds -= 1;
                                   exerciseTime = setTime - _timerSeconds;
-                                  print(kcalCalculator(
-                                      menuList[index]['title']!, exerciseTime));
                                 });
                               });
                             }

@@ -1,5 +1,6 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:health_tracker/models/nutrition_history.dart';
 import 'package:health_tracker/utils/icon.dart';
 import 'package:health_tracker/utils/style.dart';
 
@@ -17,8 +18,10 @@ class NutritionCard extends StatelessWidget {
   String _cardLable;
   String _cardDetail;
   Widget nextPage;
+  NutritionHistory data;
 
-  NutritionCard(NutritionCardType cardType, this.nextPage, {Key? key})
+  NutritionCard(NutritionCardType cardType, this.nextPage, this.data,
+      {Key? key})
       : _backgroundColor = Colors.grey[100]!,
         _iconName = "",
         _cardLable = "",
@@ -29,25 +32,25 @@ class NutritionCard extends StatelessWidget {
         _backgroundColor = MyColors.fatCard;
         _iconName = "fat";
         _cardLable = "FAT";
-        _cardDetail = "500 kcal";
+        _cardDetail = "${data.fat} kcal";
         break;
       case NutritionCardType.carbohydeate:
         _backgroundColor = MyColors.carbohydeateCard;
         _iconName = "wheet";
         _cardLable = "CARBOHYDEATE";
-        _cardDetail = "500 G";
+        _cardDetail = "${data.carb} G";
         break;
       case NutritionCardType.protein:
         _backgroundColor = MyColors.proteinCard;
         _iconName = "protein";
         _cardLable = "PROTEIN";
-        _cardDetail = "500 G";
+        _cardDetail = "${data.protein} G";
         break;
       case NutritionCardType.sodium:
         _backgroundColor = MyColors.sodiumCard;
         _iconName = "sodium";
         _cardLable = "SODIUM";
-        _cardDetail = "500 MG";
+        _cardDetail = "${data.sodium} MG";
         break;
     }
   }

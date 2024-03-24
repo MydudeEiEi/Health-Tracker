@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:health_tracker/components/nutrition_card.dart';
 import 'package:health_tracker/components/recommended_menu_card.dart';
 import 'package:health_tracker/controller/home_controller.dart';
+import 'package:health_tracker/models/nutrition_history.dart';
 import 'package:health_tracker/pages/nutrition_page.dart';
 import 'package:health_tracker/utils/icon.dart';
 import 'package:health_tracker/utils/style.dart';
@@ -15,6 +16,22 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final controller = HomeController();
+  NutritionHistory userNutritionData = NutritionHistory(
+      fat: 0, carb: 0, protein: 0, sodium: 0, day: DateTime.now(), userUid: '');
+
+  void loadNutritionData() {
+    controller.getUserNutritionHistory().then((value) {
+      setState(() {
+        userNutritionData = value;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    loadNutritionData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -133,20 +150,26 @@ class _HomePageState extends State<HomePage> {
             children: [
               Expanded(
                   child: NutritionCard(
-                      NutritionCardType.fat, NutritionPage(NutritionType.fat))),
+                      NutritionCardType.fat,
+                      NutritionPage(
+                        NutritionType.fat,
+                      ),
+                      userNutritionData)),
               Expanded(
-                  child: NutritionCard(NutritionCardType.carbohydeate,
-                      NutritionPage(NutritionType.carbohydeate))),
+                  child: NutritionCard(
+                      NutritionCardType.carbohydeate,
+                      NutritionPage(NutritionType.carbohydeate),
+                      userNutritionData)),
             ],
           ),
           Row(
             children: [
               Expanded(
                   child: NutritionCard(NutritionCardType.protein,
-                      NutritionPage(NutritionType.protein))),
+                      NutritionPage(NutritionType.protein), userNutritionData)),
               Expanded(
                   child: NutritionCard(NutritionCardType.sodium,
-                      NutritionPage(NutritionType.sodium))),
+                      NutritionPage(NutritionType.sodium), userNutritionData)),
             ],
           ),
           SizedBox(height: screenHight * .02),
