@@ -32,7 +32,7 @@ class NutritionCard extends StatelessWidget {
         _backgroundColor = MyColors.fatCard;
         _iconName = "fat";
         _cardLable = "FAT";
-        _cardDetail = "${data.fat} kcal";
+        _cardDetail = "${data.fat} Kcal";
         break;
       case NutritionCardType.carbohydeate:
         _backgroundColor = MyColors.carbohydeateCard;

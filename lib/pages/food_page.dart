@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:health_tracker/components/my_snackbar.dart';
 import 'package:health_tracker/components/recommended_menu_card.dart';
 import 'package:health_tracker/controller/food_controller.dart';
 import 'package:health_tracker/models/food.dart';
@@ -14,6 +15,10 @@ class FoodPage extends StatefulWidget {
 class _FoodPageState extends State<FoodPage> {
   FoodController foodController = FoodController();
 
+  void selectRecommendedFood(Food food) {
+    foodController.selectFood(food);
+  }
+
   @override
   Widget build(BuildContext context) {
     BuildContext thisContext = context;
@@ -23,6 +28,7 @@ class _FoodPageState extends State<FoodPage> {
           builder: (BuildContext context, snapshot) {
             if (snapshot.hasData) {
               final foods = snapshot.data!;
+              foods.shuffle();
               return ListView.builder(
                   itemCount: foods.length,
                   itemBuilder: (context, index) {
@@ -38,7 +44,6 @@ class _FoodPageState extends State<FoodPage> {
                               ),
                             );
                           } else if (snapshot.hasError || !snapshot.hasData) {
-                            // โหลดรูปไม่ได้จะให้แสดงอะไร
                             return const Icon(Icons.error);
                           }
                           return RecommendedMenuCard(
@@ -125,24 +130,29 @@ class _FoodPageState extends State<FoodPage> {
                           Text("${food.fat} Kcal", style: MyTextStyle.body()),
                           const SizedBox(height: 10),
                           Text("PROTEIN", style: MyTextStyle.body()),
-                          Text("${food.protein} Kcal",
-                              style: MyTextStyle.body()),
+                          Text("${food.protein} G", style: MyTextStyle.body()),
                         ]),
                         const Spacer(),
                         Column(children: [
                           Text("CARBOHYDRATE", style: MyTextStyle.body()),
-                          Text("${food.carb} Kcal", style: MyTextStyle.body()),
+                          Text("${food.carb} G", style: MyTextStyle.body()),
                           const SizedBox(height: 10),
                           Text("SODIUM", style: MyTextStyle.body()),
-                          Text("${food.sodium} Kcal",
-                              style: MyTextStyle.body()),
+                          Text("${food.sodium} MG", style: MyTextStyle.body()),
                         ]),
                         const Spacer(),
                       ],
                     ),
                     ElevatedButton(
                         onPressed: () => {
+                              selectRecommendedFood(food),
                               Navigator.of(context).pop(),
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  mySnackBar(SnackBarType.success,
+                                      "Selected food successfully!",
+                                      textStyle: const TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold)))
                             },
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all<

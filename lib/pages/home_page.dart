@@ -8,7 +8,8 @@ import 'package:health_tracker/utils/icon.dart';
 import 'package:health_tracker/utils/style.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final DateTime selectedDate;
+  const HomePage(this.selectedDate, {Key? key,}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -17,10 +18,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final controller = HomeController();
   NutritionHistory userNutritionData = NutritionHistory(
-      fat: 0, carb: 0, protein: 0, sodium: 0, day: DateTime.now(), userUid: '');
+      fat: 0,
+      carb: 0,
+      protein: 0,
+      sodium: 0,
+      energy: 0,
+      day: DateTime.now(),
+      userUid: '');
 
   void loadNutritionData() {
-    controller.getUserNutritionHistory().then((value) {
+    controller.getUserNutritionHistory(widget.selectedDate).then((value) {
       setState(() {
         userNutritionData = value;
       });
@@ -134,7 +141,8 @@ class _HomePageState extends State<HomePage> {
                 const Spacer(),
                 Column(
                   children: [
-                    Text("2000", style: MyTextStyle.title()),
+                    Text(userNutritionData.energy.toStringAsFixed(0),
+                        style: MyTextStyle.title()),
                     Text(
                       "Total calories",
                       style: MyTextStyle.subtitle(fontWeight: FontWeight.bold),

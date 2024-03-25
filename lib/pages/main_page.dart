@@ -20,12 +20,15 @@ class _MainPageState extends State<MainPage> {
   DateTime _selectedDate = DateTime.now();
   final int _fadeDuration = 150;
   final double _iconBackgroundPadding = 11.5;
+  List<Widget> pages = [];
 
-  final List<Widget> _pages = const [
-    FoodPage(),
-    HomePage(),
-    GymPage(),
-  ];
+  _MainPageState() {
+    pages = [
+      const FoodPage(),
+      HomePage(_selectedDate),
+      const GymPage(),
+    ];
+  }
 
   void _onTapNavigationBar(int index) {
     setState(() {
@@ -34,7 +37,16 @@ class _MainPageState extends State<MainPage> {
   }
 
   Future<void> _onTapCalendar() async {
-    _selectedDate = await showMyDatePicker() ?? _selectedDate;
+    final DateTime? selectedDate = await showMyDatePicker();
+    setState(() {
+      _selectedDate = selectedDate ?? _selectedDate;
+      pages[1] = const Center(
+        child: CircularProgressIndicator(
+          color: Colors.blue,
+        ),
+      );
+      pages[1] = HomePage(_selectedDate);
+    });
   }
 
   @override
@@ -106,7 +118,7 @@ class _MainPageState extends State<MainPage> {
               ),
             ),
             Expanded(
-              child: _pages.elementAt(_currentIndex),
+              child: pages.elementAt(_currentIndex),
             ),
           ],
         ),
@@ -169,7 +181,7 @@ class _MainPageState extends State<MainPage> {
         context: context,
         firstDate: DateTime(2000),
         lastDate: DateTime(2100),
-        initialDate: DateTime.now(),
+        initialDate: _selectedDate,
         builder: (context, child) => Theme(
             data: ThemeData.light().copyWith(
               primaryColor: const Color.fromARGB(255, 93, 144, 255),

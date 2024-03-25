@@ -5,6 +5,7 @@ class NutritionHistory {
   final num fat;
   final num protein;
   final num sodium;
+  final num energy;
   final DateTime day;
   final String userUid;
 
@@ -13,6 +14,7 @@ class NutritionHistory {
     required this.fat,
     required this.protein,
     required this.sodium,
+    required this.energy,
     required this.day,
     required this.userUid,
   });
@@ -23,6 +25,7 @@ class NutritionHistory {
       fat: json['fat'],
       protein: json['protein'],
       sodium: json['sodium'],
+      energy: json['energy'],
       day: (json['day'].toDate()),
       userUid: json['user_id'],
     );
@@ -34,6 +37,7 @@ class NutritionHistory {
       'fat': fat,
       'protein': protein,
       'sodium': sodium,
+      'energy': energy,
       'day': Timestamp.fromDate(day),
       'user_id': userUid,
     };

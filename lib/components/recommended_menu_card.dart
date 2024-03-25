@@ -118,26 +118,31 @@ class RecommendedMenuCard extends StatelessWidget {
     String title = "";
     num value = 0.0;
     Color barColor = Colors.white;
+    String unit = "";
     switch (type) {
       case NutritionType.fat:
         title = "FAT";
         value = food.fat;
         barColor = MyColors.fatCard;
+        unit = "Kcal";
         break;
       case NutritionType.carbohydeate:
         title = "CARBOHYDEATE";
         value = food.carb;
         barColor = MyColors.carbohydeateCard;
+        unit = "G";
         break;
       case NutritionType.protein:
         title = "PROTEIN";
         value = food.protein;
         barColor = MyColors.proteinCard;
+        unit = "G";
         break;
       case NutritionType.sodium:
         title = "SODIUM";
         value = food.sodium;
         barColor = MyColors.sodiumCard;
+        unit = "MG";
         break;
     }
 
@@ -160,7 +165,7 @@ class RecommendedMenuCard extends StatelessWidget {
           percent: percent,
           progressColor: barColor,
         ),
-        Text("$value Kcal", style: MyTextStyle.body()),
+        Text("$value $unit", style: MyTextStyle.body()),
       ],
     );
   }

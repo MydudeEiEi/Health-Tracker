@@ -21,10 +21,11 @@ class HomeController {
 
   // }
 
-  Future<NutritionHistory> getUserNutritionHistory() async {
+  Future<NutritionHistory> getUserNutritionHistory(
+      DateTime selectedDate) async {
     final String userId = UserController.user?.uid ?? '';
     final data = await nutritionHistoryRepository
-        .getUserNutritionHistoryByUserUidAndDate(userId, DateTime.now());
+        .getUserNutritionHistoryByUserUidAndDate(userId, selectedDate);
     if (data != null) {
       return data;
     } else {
@@ -33,6 +34,7 @@ class HomeController {
         fat: 0,
         protein: 0,
         sodium: 0,
+        energy: 0,
         day: DateTime.now(),
         userUid: userId,
       );
