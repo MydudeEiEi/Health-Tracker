@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:health_tracker/components/profile_img.dart';
 import 'package:health_tracker/components/water_drop_button.dart';
 import 'package:health_tracker/controller/user_controller.dart';
 import 'package:health_tracker/pages/food_page.dart';
 import 'package:health_tracker/pages/gym_page.dart';
 import 'package:health_tracker/pages/home_page.dart';
+import 'package:health_tracker/pages/profile_page.dart';
 import 'package:health_tracker/utils/icon.dart';
 import 'package:health_tracker/utils/style.dart';
 import 'package:intl/intl.dart';
@@ -66,22 +68,13 @@ class _MainPageState extends State<MainPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  InkWell(
-                    onTap: () {
-                      UserController.signOut();
-                    },
-                    child: CircleAvatar(
-                      radius: 25,
-                      foregroundImage:
-                          NetworkImage(UserController.user?.photoURL ?? ''),
-                    ),
-                  ),
+                  const ProfileImg(ProfilePage()),
                   const SizedBox(width: 10),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Hello, ${UserController.user?.displayName?.split(' ')[0] ?? ''}!",
+                        "Hello, ${UserController.user?.displayName?.split(' ')[0] ?? 'Guest'}!",
                         style: MyTextStyle.subtitle(),
                       ),
                       Text(
