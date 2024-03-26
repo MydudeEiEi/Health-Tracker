@@ -2,14 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:health_tracker/components/nutrition_card.dart';
 import 'package:health_tracker/components/recommended_menu_card.dart';
 import 'package:health_tracker/controller/home_controller.dart';
+import 'package:health_tracker/controller/user_controller.dart';
 import 'package:health_tracker/models/nutrition_history.dart';
+import 'package:health_tracker/models/user_information.dart';
 import 'package:health_tracker/pages/nutrition_page.dart';
 import 'package:health_tracker/utils/icon.dart';
 import 'package:health_tracker/utils/style.dart';
 
 class HomePage extends StatefulWidget {
   final DateTime selectedDate;
-  const HomePage(this.selectedDate, {Key? key,}) : super(key: key);
+  const HomePage(
+    this.selectedDate, {
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -17,6 +22,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final controller = HomeController();
+  int bmr = 0;
+
   NutritionHistory userNutritionData = NutritionHistory(
       fat: 0,
       carb: 0,
@@ -34,10 +41,35 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void calculateBMR() {
+    controller
+        .getUserInformationByUserUid(UserController.user!.uid)
+        .then((value) {
+      setState(() {
+        if (value.gender.toLowerCase() == 'male') {
+          bmr = (66 +
+                  (13.7 * value.weight) +
+                  (5 * value.height) -
+                  (6.8 * value.age))
+              .toInt();
+        } else if (value.gender.toLowerCase == 'female') {
+          bmr = (655 +
+                  (9.6 * value.weight) +
+                  (1.8 * value.height) -
+                  (4.7 * value.age))
+              .toInt();
+        } else {
+          bmr = 0;
+        }
+      });
+    });
+  }
+
   @override
   void initState() {
     super.initState();
     loadNutritionData();
+    calculateBMR();
   }
 
   @override
@@ -116,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                 Column(
                   children: [
                     Text(
-                      "1535",
+                      "$bmr",
                       style: MyTextStyle.title(),
                     ),
                     Text(

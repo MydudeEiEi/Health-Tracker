@@ -1,14 +1,18 @@
 import 'package:flutter/foundation.dart';
 import 'package:health_tracker/controller/user_controller.dart';
 import 'package:health_tracker/models/nutrition_history.dart';
+import 'package:health_tracker/models/user_information.dart';
 import 'package:health_tracker/repository/health_repository.dart';
 import 'package:health_tracker/models/blood_glucose.dart';
 import 'package:health_tracker/repository/nutrition_history_repository.dart';
+import 'package:health_tracker/repository/user_information_repository.dart';
 
 class HomeController {
   final repository = HealthRepository();
   final NutritionHistoryRepository nutritionHistoryRepository =
       NutritionHistoryRepository();
+  final UserInformationRepository userInformationRepository =
+      UserInformationRepository();
   // Future<void> getDataFirebase() async {
   //   final movieRef = FirebaseFirestore.instance
   //     .collection('movies')
@@ -46,5 +50,9 @@ class HomeController {
   final bloodGlucoses = ValueNotifier(<BloodGlucose>[]);
   Future<void> getData() async {
     bloodGlucoses.value = await repository.getBloodGlucose();
+  }
+
+  Future<UserInformation> getUserInformationByUserUid(String userId) async {
+    return userInformationRepository.getUserInformationByUserUid(userId);
   }
 }
