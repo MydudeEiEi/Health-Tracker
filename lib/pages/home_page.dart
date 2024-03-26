@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                   (5 * value.height) -
                   (6.8 * value.age))
               .toInt();
-        } else if (value.gender.toLowerCase == 'female') {
+        } else if (value.gender.toLowerCase() == 'female') {
           bmr = (655 +
                   (9.6 * value.weight) +
                   (1.8 * value.height) -
