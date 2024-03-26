@@ -56,4 +56,26 @@ class NutritionHistoryRepository {
       'energy': num.parse((data.energy + food.energy).toStringAsFixed(1)),
     });
   }
+
+  Future<void> addTodayBurnByUserId(String userId, num exerciseBurn) async {
+    final date = DateTime.now();
+    final startDate =
+        Timestamp.fromDate(DateTime(date.year, date.month, date.day));
+    final endDate =
+        Timestamp.fromDate(DateTime(date.year, date.month, date.day + 1));
+    final doc = await nutritionCollections
+        .where('user_id', isEqualTo: userId)
+        .where('day', isGreaterThanOrEqualTo: startDate)
+        .where('day', isLessThan: endDate)
+        .get();
+    if (doc.docs.isEmpty) {
+      print('add today burn failed because data is empty');
+      return;
+    }
+    final data = NutritionHistory.fromJson(doc.docs[0].data());
+    final id = doc.docs[0].id;
+    await nutritionCollections.doc(id).update({
+      'today_burn': num.parse((data.todayBurn + exerciseBurn).toString()),
+    });
+  }
 }

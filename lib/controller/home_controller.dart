@@ -33,15 +33,7 @@ class HomeController {
     if (data != null) {
       return data;
     } else {
-      final newData = NutritionHistory(
-        carb: 0,
-        fat: 0,
-        protein: 0,
-        sodium: 0,
-        energy: 0,
-        day: DateTime.now(),
-        userUid: userId,
-      );
+      final newData = NutritionHistory.empty();
       await nutritionHistoryRepository.addNutritionHistory(newData);
       return newData;
     }

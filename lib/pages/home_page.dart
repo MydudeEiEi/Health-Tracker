@@ -27,14 +27,7 @@ class _HomePageState extends State<HomePage> {
     calculateBMR();
   }
 
-  NutritionHistory userNutritionData = NutritionHistory(
-      fat: 0,
-      carb: 0,
-      protein: 0,
-      sodium: 0,
-      energy: 0,
-      day: DateTime.now(),
-      userUid: '');
+  NutritionHistory userNutritionData = NutritionHistory.empty();
 
   void loadNutritionData() {
     controller.getUserNutritionHistory(widget.selectedDate).then((value) {
@@ -164,7 +157,7 @@ class _HomePageState extends State<HomePage> {
                 Column(
                   children: [
                     Text(
-                      "500",
+                      (userNutritionData.todayBurn + bmr).toStringAsFixed(0),
                       style: MyTextStyle.title(),
                     ),
                     Text(

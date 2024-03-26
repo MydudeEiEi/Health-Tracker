@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:health_tracker/controller/gym_controller.dart';
+import 'package:health_tracker/controller/user_controller.dart';
 import 'package:health_tracker/utils/icon.dart';
 import 'package:health_tracker/utils/number.dart';
 import 'package:health_tracker/utils/style.dart';
@@ -13,6 +15,8 @@ class GymPage extends StatefulWidget {
 }
 
 class _GymPageState extends State<GymPage> {
+  final GymController controller = GymController();
+
   final List<Map<String, String>> menuList = [
     {'title': 'Indoor Walk', 'icon': 'indoor_walk'},
     {'title': 'Outdoor Walk', 'icon': 'outdoor_walk'},
@@ -24,9 +28,15 @@ class _GymPageState extends State<GymPage> {
   String kcalCalculator(String action, int seconds) {
     if (action.contains('Walk')) {
       const kcalPerSec = 0.075;
+      setState(() {
+        exerciseBurn = kcalPerSec * seconds;
+      });
       return '${(kcalPerSec * seconds).floor()} Kcal';
     }
     const kcalPerSec = 0.145;
+    setState(() {
+      exerciseBurn = kcalPerSec * seconds;
+    });
     return '${(kcalPerSec * seconds).floor()} Kcal';
   }
 
@@ -37,6 +47,7 @@ class _GymPageState extends State<GymPage> {
 
   Timer? timer;
   int exerciseTime = 0;
+  num exerciseBurn = 0;
   Icon iconTimer = const Icon(
     Icons.play_arrow_outlined,
     size: 50,
@@ -65,6 +76,12 @@ class _GymPageState extends State<GymPage> {
         );
       }
     });
+  }
+
+  @override
+  void dispose() {
+    controller.updateTodayBurnByUserId(UserController.user!.uid, exerciseBurn);
+    super.dispose();
   }
 
   @override
