@@ -66,7 +66,6 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     loadNutritionData();
     calculateBMR();
-    controller.getData();
   }
 
   @override
