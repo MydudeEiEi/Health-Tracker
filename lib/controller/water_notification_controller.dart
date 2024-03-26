@@ -1,5 +1,6 @@
 import 'package:health_tracker/models/water_notification.dart';
 import 'package:health_tracker/repository/water_notification_repository.dart';
+import 'package:health_tracker/utils/notification_service.dart';
 
 class WaterNotificationController {
   final WaterNotificationRepository waterNotificationRepository =
@@ -9,6 +10,18 @@ class WaterNotificationController {
     final String key = '$hour:$minute';
     const String value = 'on';
     await waterNotificationRepository.saveWaterNotification(key, value);
+
+    DateTime now = DateTime.now();
+
+    // NotificationService().scheduleNotification(
+    //     title: 'Stay hydrated!',
+    //     body:
+    //         '💧 It is time to drink some water!',
+    //     scheduledNotificationDateTime:
+    //         DateTime(now.year, now.month, now.day, hour, minute));
+    NotificationService().showNotification(
+        title: 'Stay hydrated!',
+        body: '💧 It is time to drink some water!');
   }
 
   Future<List<WaterNotification>> getWaterNotifications() async {

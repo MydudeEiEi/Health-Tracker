@@ -1,6 +1,5 @@
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:health_tracker/components/my_snackbar.dart';
 import 'package:health_tracker/controller/water_notification_controller.dart';
@@ -157,29 +156,29 @@ class _WaterNotificationPageState extends State<WaterNotificationPage> {
                     borderRadius: BorderRadius.circular(50.0),
                     child: Slidable(
                       endActionPane: ActionPane(
-                        motion: const BehindMotion(),
-                        extentRatio: 0.4,
-                        openThreshold: 0.15,
-                        closeThreshold: 0.15,
-                        children: [
-                          SlidableAction(
-                            onPressed: (context) => {
-                              controller.deleteWaterNotification(
-                                  int.parse(notification.hour),
-                                  int.parse(notification.minute)),
-                              loadNotification(),
-                              ScaffoldMessenger.of(context).showSnackBar(mySnackBar(
-                                  SnackBarType.success,
-                                  "Delete notification success.",
-                                  textStyle: const TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold)))
-                            },
-                            label: 'Delete',
-                            icon: Icons.delete,
-                            backgroundColor: Colors.red,
-                          ),
-                        ]),
+                          motion: const BehindMotion(),
+                          extentRatio: 0.4,
+                          openThreshold: 0.15,
+                          closeThreshold: 0.15,
+                          children: [
+                            SlidableAction(
+                              onPressed: (context) => {
+                                controller.deleteWaterNotification(
+                                    int.parse(notification.hour),
+                                    int.parse(notification.minute)),
+                                loadNotification(),
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    mySnackBar(SnackBarType.success,
+                                        "Delete notification success.",
+                                        textStyle: const TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold)))
+                              },
+                              label: 'Delete',
+                              icon: Icons.delete,
+                              backgroundColor: Colors.red,
+                            ),
+                          ]),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 5, horizontal: 20),
