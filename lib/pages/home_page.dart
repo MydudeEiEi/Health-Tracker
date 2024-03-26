@@ -4,7 +4,6 @@ import 'package:health_tracker/components/recommended_menu_card.dart';
 import 'package:health_tracker/controller/home_controller.dart';
 import 'package:health_tracker/controller/user_controller.dart';
 import 'package:health_tracker/models/nutrition_history.dart';
-import 'package:health_tracker/models/user_information.dart';
 import 'package:health_tracker/pages/nutrition_page.dart';
 import 'package:health_tracker/utils/icon.dart';
 import 'package:health_tracker/utils/style.dart';
@@ -23,6 +22,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final controller = HomeController();
   int bmr = 0;
+
+  _HomePageState() {
+    calculateBMR();
+  }
 
   NutritionHistory userNutritionData = NutritionHistory(
       fat: 0,

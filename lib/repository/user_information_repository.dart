@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:health_tracker/controller/user_controller.dart';
 import 'package:health_tracker/models/user_information.dart';
 
 class UserInformationRepository {
@@ -12,7 +11,6 @@ class UserInformationRepository {
     final data =
         doc.docs.map((e) => UserInformation.fromJson(e.data())).toList();
     if (data.isEmpty) {
-      final userId = UserController.user?.uid ?? '';
       final newUserInfo = UserInformation.empty(userId: userId);
       await addUserInformation(newUserInfo);
       return newUserInfo;
