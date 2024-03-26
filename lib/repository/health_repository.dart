@@ -10,7 +10,7 @@ class HealthRepository {
 
     if (requested) {
       // Specify the start and end time for the desired one-day range
-      DateTime startTime = DateTime.now().subtract(const Duration(days: 1));
+      DateTime startTime = DateTime.now().subtract(const Duration(days: 100));
       DateTime endTime = DateTime.now();
 
       // Fetch blood glucose data for the specified time range
@@ -20,11 +20,11 @@ class HealthRepository {
         [HealthDataType.BLOOD_GLUCOSE],
       );
 
-      //print("Health data: $healthData");
+      print("Health data: $healthData");
 
       return healthData.map((e) {
         var b = e;
-        print(b.value.toJson()['numericValue']);
+        print("blood glu " + b.value.toJson()['numericValue']);
         return BloodGlucose(
           double.parse(b.value.toJson()['numericValue']),
           b.unitString,

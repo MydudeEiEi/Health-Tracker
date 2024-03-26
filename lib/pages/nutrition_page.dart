@@ -32,25 +32,49 @@ class _NutritionPageState extends State<NutritionPage> {
           _backgroundColor = MyColors.fatCard;
           imageName = "fat";
           unit = 'Kcal';
-          allData = controller.getFatHistory();
+          controller.getFatHistory().then((value) {
+            if (mounted) {
+              setState(() {
+                allData = value;
+              });
+            }
+          });
           break;
         case NutritionType.carbohydeate:
           _backgroundColor = MyColors.carbohydeateCard;
           imageName = "wheet";
           unit = 'G';
-          allData = controller.getFatHistory();
+          controller.getCarbHistory().then((value) {
+            if (mounted) {
+              setState(() {
+                allData = value;
+              });
+            }
+          });
           break;
         case NutritionType.protein:
           _backgroundColor = MyColors.proteinCard;
           imageName = "protein";
           unit = 'G';
-          allData = controller.getFatHistory();
+          controller.getProteinHistory().then((value) {
+            if (mounted) {
+              setState(() {
+                allData = value;
+              });
+            }
+          });
           break;
         case NutritionType.sodium:
           _backgroundColor = MyColors.sodiumCard;
           imageName = "sodium";
           unit = 'MG';
-          allData = controller.getFatHistory();
+          controller.getSodiumHistory().then((value) {
+            if (mounted) {
+              setState(() {
+                allData = value;
+              });
+            }
+          });
           break;
       }
     });

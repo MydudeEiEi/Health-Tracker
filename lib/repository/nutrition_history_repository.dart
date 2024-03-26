@@ -27,6 +27,19 @@ class NutritionHistoryRepository {
         .toList())[0];
   }
 
+  Future<List<NutritionHistory>> getUserNutritionHistoryLast7DaysByUserUid(
+      String userId) async {
+    final startDate =
+        Timestamp.fromDate(DateTime.now().subtract(const Duration(days: 7)));
+    final endDate = Timestamp.fromDate(DateTime.now());
+    final doc = await nutritionCollections
+        .where('user_id', isEqualTo: userId)
+        .where('day', isGreaterThanOrEqualTo: startDate)
+        .where('day', isLessThan: endDate)
+        .get();
+    return doc.docs.map((e) => NutritionHistory.fromJson(e.data())).toList();
+  }
+
   Future<void> addNutritionHistory(NutritionHistory nutrition) async {
     await nutritionCollections.add(nutrition.toJson());
   }

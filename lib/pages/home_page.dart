@@ -66,6 +66,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     loadNutritionData();
     calculateBMR();
+    controller.getData();
   }
 
   @override
@@ -161,7 +162,11 @@ class _HomePageState extends State<HomePage> {
                       style: MyTextStyle.title(),
                     ),
                     Text(
-                      "Total Burn calories",
+                      "Total Burn",
+                      style: MyTextStyle.subtitle(fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "calories",
                       style: MyTextStyle.subtitle(fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -172,7 +177,11 @@ class _HomePageState extends State<HomePage> {
                     Text(userNutritionData.energy.toStringAsFixed(0),
                         style: MyTextStyle.title()),
                     Text(
-                      "Total calories",
+                      "Total",
+                      style: MyTextStyle.subtitle(fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "calories",
                       style: MyTextStyle.subtitle(fontWeight: FontWeight.bold),
                     )
                   ],

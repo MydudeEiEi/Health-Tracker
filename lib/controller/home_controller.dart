@@ -13,6 +13,7 @@ class HomeController {
       NutritionHistoryRepository();
   final UserInformationRepository userInformationRepository =
       UserInformationRepository();
+  final HealthRepository healthRepository = HealthRepository();
   // Future<void> getDataFirebase() async {
   //   final movieRef = FirebaseFirestore.instance
   //     .collection('movies')
@@ -39,12 +40,17 @@ class HomeController {
     }
   }
 
-  final bloodGlucoses = ValueNotifier(<BloodGlucose>[]);
-  Future<void> getData() async {
-    bloodGlucoses.value = await repository.getBloodGlucose();
-  }
+  // final bloodGlucoses = ValueNotifier(<BloodGlucose>[]);
+  // Future<void> getData() async {
+  //   bloodGlucoses.value = await repository.getBloodGlucose();
+  //   print(bloodGlucoses.value);
+  // }
 
   Future<UserInformation> getUserInformationByUserUid(String userId) async {
     return userInformationRepository.getUserInformationByUserUid(userId);
+  }
+
+  Future<void> test() {
+    return healthRepository.getBloodGlucose();
   }
 }
