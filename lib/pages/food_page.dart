@@ -28,7 +28,6 @@ class _FoodPageState extends State<FoodPage> {
           builder: (BuildContext context, snapshot) {
             if (snapshot.hasData) {
               final foods = snapshot.data!;
-              print(snapshot.data?.length);
               foods.shuffle();
               return ListView.builder(
                   itemCount: foods.length,

@@ -60,7 +60,7 @@ class RecommendedMenuCard extends StatelessWidget {
                           width: double.infinity,
                           child: Image.network(
                             imagePath,
-                            fit: BoxFit.fitWidth,
+                            fit: BoxFit.cover,
                             frameBuilder: (context, child, frame,
                                 wasSynchronouslyLoaded) {
                               return child;
