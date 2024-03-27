@@ -12,16 +12,20 @@ class WaterNotificationController {
     await waterNotificationRepository.saveWaterNotification(key, value);
 
     DateTime now = DateTime.now();
+    if (now.hour > hour || (now.hour == hour && now.minute > minute)) {
+      now = now.add(const Duration(days: 1));
+    }
 
-    // NotificationService().scheduleNotification(
-    //     title: 'Stay hydrated!',
-    //     body:
-    //         '💧 It is time to drink some water!',
-    //     scheduledNotificationDateTime:
-    //         DateTime(now.year, now.month, now.day, hour, minute));
-    NotificationService().showNotification(
+    NotificationService().scheduleNotification(
+        id: hour * 100 + minute,
         title: 'Stay hydrated!',
-        body: '💧 It is time to drink some water!');
+        body: '💧 It is time to drink some water!',
+        scheduledNotificationDateTime:
+            DateTime(now.year, now.month, now.day, hour, minute));
+  }
+
+  Future<void> cancelNotification(int hour, int minute) async {
+    await NotificationService().cancelNotification(hour * 100 + minute);
   }
 
   Future<List<WaterNotification>> getWaterNotifications() async {
@@ -42,10 +46,22 @@ class WaterNotificationController {
     final String key = '$hour:$minute';
     String value = isOn ? 'on' : 'off';
     await waterNotificationRepository.saveWaterNotification(key, value);
+    if (isOn) {
+      DateTime now = DateTime.now();
+      NotificationService().scheduleNotification(
+          id: hour * 100 + minute,
+          title: 'Stay hydrated!',
+          body: '💧 It is time to drink some water!',
+          scheduledNotificationDateTime:
+              DateTime(now.year, now.month, now.day + 1, hour, minute));
+    } else {
+      await NotificationService().cancelNotification(hour * 100 + minute);
+    }
   }
 
   Future<void> deleteWaterNotification(int hour, int minute) async {
     final String key = '$hour:$minute';
     await waterNotificationRepository.deleteWaterNotification(key);
+    await NotificationService().cancelNotification(hour * 100 + minute);
   }
 }

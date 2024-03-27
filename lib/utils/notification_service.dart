@@ -42,22 +42,23 @@ class NotificationService {
       String? body,
       String? payLoad,
       required DateTime scheduledNotificationDateTime}) async {
-    print(
-      tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5))
-    );
-    print(tz.local);
+        print("set notification with id $id");
 
     return notificationsPlugin.zonedSchedule(
         id,
         title,
         body,
-        // tz.TZDateTime.from(
-        //   scheduledNotificationDateTime,
-        //   tz.local,
-        // ),
-        tz.TZDateTime.now(tz.local).add(const Duration(seconds: 1)),
+        tz.TZDateTime.from(
+          scheduledNotificationDateTime,
+          tz.local,
+        ),
         await notificationDetails(),
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime);
+  }
+
+  Future<void> cancelNotification(int id) async {
+    print("remove notification with id $id");
+    await notificationsPlugin.cancel(id);
   }
 }
