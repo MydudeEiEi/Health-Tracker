@@ -24,7 +24,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorSchemeSeed: Colors.deepOrange,
         textTheme: GoogleFonts.montserratTextTheme(),
       ),
       home: UserController.user != null ? const MainPage() : const LoginPage(),

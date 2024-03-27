@@ -5,7 +5,7 @@ class MyColors {
   static const Color blueWaterDrop = Color(0xFF11A7FC);
   static const Color redCalendar = Color(0xFFF15223);
 
-  static const Color sleepCard = Color(0xFF1D0956);
+  static const Color sleepCard = Color(0xFFBB85FF);
   static const Color fatCard = Color(0xFFFFB800);
   static const Color carbohydeateCard = Color(0xFF7CD671);
   static const Color proteinCard = Color(0xFFC0482D);

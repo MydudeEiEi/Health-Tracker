@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
         body: Container(
-      margin: EdgeInsets.symmetric(horizontal: screenWidth * .025),
+      margin: EdgeInsets.symmetric(horizontal: screenWidth * .025, vertical: 15),
       child: Column(
         children: [
           Container(
@@ -109,22 +109,22 @@ class _HomePageState extends State<HomePage> {
                   const Spacer(),
                   Center(
                       child:
-                          buildIcon("bedtime", color: Colors.white, size: 60)),
+                          buildIcon("salad", color: Colors.black, size: 70)),
                   const Spacer(),
                   Center(
                       child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Sleeping",
+                        "RECOMMENDED",
                         style: MyTextStyle.title(color: Colors.white),
                       ),
                       Text(
-                        "8",
+                        "HEALTHY",
                         style: MyTextStyle.title(color: Colors.white),
                       ),
                       Text(
-                        "Hour",
+                        "FOOD",
                         style: MyTextStyle.title(color: Colors.white),
                       )
                     ],
@@ -138,7 +138,7 @@ class _HomePageState extends State<HomePage> {
           Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Spacer(),
                 Column(
@@ -215,52 +215,6 @@ class _HomePageState extends State<HomePage> {
                   child: NutritionCard(NutritionCardType.sodium,
                       NutritionPage(NutritionType.sodium), userNutritionData)),
             ],
-          ),
-          SizedBox(height: screenHight * .02),
-          Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const Spacer(),
-                Column(
-                  children: [
-                    Text(
-                      "7580 m",
-                      style: MyTextStyle.title(),
-                    ),
-                    Text(
-                      "Distance",
-                      style: MyTextStyle.subtitle(fontWeight: FontWeight.bold),
-                    )
-                  ],
-                ),
-                const Spacer(),
-                Column(
-                  children: [
-                    Text(
-                      "9832",
-                      style: MyTextStyle.title(),
-                    ),
-                    Text(
-                      "Steps",
-                      style: MyTextStyle.subtitle(fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-                const Spacer(),
-                Column(
-                  children: [
-                    Text("1248", style: MyTextStyle.title()),
-                    Text(
-                      "Minutes",
-                      style: MyTextStyle.subtitle(fontWeight: FontWeight.bold),
-                    )
-                  ],
-                ),
-                const Spacer(),
-              ],
-            ),
           ),
         ],
       ),
