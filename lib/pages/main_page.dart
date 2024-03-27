@@ -11,7 +11,8 @@ import 'package:health_tracker/utils/style.dart';
 import 'package:intl/intl.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+  final int indexPage;
+  const MainPage({super.key, this.indexPage = 1});
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -49,6 +50,12 @@ class _MainPageState extends State<MainPage> {
       );
       pages[1] = HomePage(_selectedDate);
     });
+  }
+
+  @override
+  void initState() {
+    _currentIndex = widget.indexPage;
+    super.initState();
   }
 
   @override

@@ -1,9 +1,11 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:health_tracker/components/nutrition_card.dart';
 import 'package:health_tracker/components/recommended_menu_card.dart';
 import 'package:health_tracker/controller/home_controller.dart';
 import 'package:health_tracker/controller/user_controller.dart';
 import 'package:health_tracker/models/nutrition_history.dart';
+import 'package:health_tracker/pages/main_page.dart';
 import 'package:health_tracker/pages/nutrition_page.dart';
 import 'package:health_tracker/utils/icon.dart';
 import 'package:health_tracker/utils/style.dart';
@@ -75,62 +77,70 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
         body: Container(
-      margin: EdgeInsets.symmetric(horizontal: screenWidth * .025, vertical: 15),
+      margin:
+          EdgeInsets.symmetric(horizontal: screenWidth * .025, vertical: 15),
       child: Column(
         children: [
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(26.0),
-                boxShadow: [
-                  BoxShadow(
-                      offset: const Offset(0.0, 3.0),
-                      blurRadius: 1.0,
-                      spreadRadius: -2.0,
-                      color: Colors.black.withOpacity(.1)),
-                  BoxShadow(
-                      offset: const Offset(0.0, 2.0),
-                      blurRadius: 2.0,
-                      color: Colors.black.withOpacity(.1)),
-                  BoxShadow(
-                      offset: const Offset(0.0, 1.0),
-                      blurRadius: 5.0,
-                      color: Colors.black.withOpacity(.1)),
-                ]),
-            height: 135,
-            child: Card(
-              color: MyColors.sleepCard,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25.0),
-              ),
-              elevation: 0,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const Spacer(),
-                  Center(
-                      child:
-                          buildIcon("salad", color: Colors.black, size: 70)),
-                  const Spacer(),
-                  Center(
-                      child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "RECOMMENDED",
-                        style: MyTextStyle.title(color: Colors.white),
-                      ),
-                      Text(
-                        "HEALTHY",
-                        style: MyTextStyle.title(color: Colors.white),
-                      ),
-                      Text(
-                        "FOOD",
-                        style: MyTextStyle.title(color: Colors.white),
-                      )
-                    ],
-                  )),
-                  const Spacer(),
-                ],
+          OpenContainer(
+            openBuilder: (context, action) => const MainPage(
+              indexPage: 0,
+            ),
+            closedShape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25)),
+            closedBuilder: (context, action) => Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(26.0),
+                  boxShadow: [
+                    BoxShadow(
+                        offset: const Offset(0.0, 3.0),
+                        blurRadius: 1.0,
+                        spreadRadius: -2.0,
+                        color: Colors.black.withOpacity(.1)),
+                    BoxShadow(
+                        offset: const Offset(0.0, 2.0),
+                        blurRadius: 2.0,
+                        color: Colors.black.withOpacity(.1)),
+                    BoxShadow(
+                        offset: const Offset(0.0, 1.0),
+                        blurRadius: 5.0,
+                        color: Colors.black.withOpacity(.1)),
+                  ]),
+              height: 135,
+              child: Card(
+                color: MyColors.sleepCard,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                ),
+                elevation: 0,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Spacer(),
+                    Center(
+                        child: buildIcon("salad",
+                            color: Colors.black, size: 70)),
+                    const Spacer(),
+                    Center(
+                        child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "RECOMMENDED",
+                          style: MyTextStyle.title(color: Colors.white),
+                        ),
+                        Text(
+                          "HEALTHY",
+                          style: MyTextStyle.title(color: Colors.white),
+                        ),
+                        Text(
+                          "FOOD",
+                          style: MyTextStyle.title(color: Colors.white),
+                        )
+                      ],
+                    )),
+                    const Spacer(),
+                  ],
+                ),
               ),
             ),
           ),
