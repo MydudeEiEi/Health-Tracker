@@ -5,9 +5,7 @@ class Food {
   final num protein;
   final num fat;
   final num carb;
-  final num fiber;
   final num sodium;
-  final num sugar;
   final String? image;
   final String type;
 
@@ -18,9 +16,7 @@ class Food {
     required this.protein,
     required this.fat,
     required this.carb,
-    required this.fiber,
     required this.sodium,
-    required this.sugar,
     this.image,
     required this.type,
   });
@@ -33,9 +29,7 @@ class Food {
       protein: doc['protein'],
       fat: doc['fat'],
       carb: doc['carb'],
-      fiber: doc['fiber'],
       sodium: doc['sodium'],
-      sugar: doc['sugar'],
       image: doc['image_path'],
       type: doc['type'],
     );
