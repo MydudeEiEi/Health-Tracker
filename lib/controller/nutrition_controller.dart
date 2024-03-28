@@ -25,6 +25,7 @@ class NutritionController {
       }
       day++;
     }
+    print(fatHistory  );
     while (day < 7) {
       fatHistory.add(0);
       day++;

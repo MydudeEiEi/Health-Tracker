@@ -36,6 +36,7 @@ class NutritionHistoryRepository {
         .where('user_id', isEqualTo: userId)
         .where('day', isGreaterThanOrEqualTo: startDate)
         .where('day', isLessThan: endDate)
+        .orderBy('day', descending: true)
         .get();
     return doc.docs.map((e) => NutritionHistory.fromJson(e.data())).toList();
   }
