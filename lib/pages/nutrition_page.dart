@@ -67,7 +67,7 @@ class _NutritionPageState extends State<NutritionPage> {
         case NutritionType.sodium:
           _backgroundColor = MyColors.sodiumCard;
           imageName = "sodium";
-          unit = 'MG';
+          unit = 'G';
           controller.getSodiumHistory().then((value) {
             if (mounted) {
               setState(() {

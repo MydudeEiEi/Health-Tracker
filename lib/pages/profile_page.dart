@@ -6,6 +6,7 @@ import 'package:health_tracker/models/user_information.dart';
 import 'package:health_tracker/pages/login_page.dart';
 import 'package:health_tracker/utils/icon.dart';
 import 'package:health_tracker/utils/style.dart';
+import 'package:flutter/services.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -218,6 +219,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         },
                         controller: _ageController,
                         keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(RegExp(r'[0-9]')), // Allow only digits
+                          ],
                         decoration: InputDecoration(
                           isDense: true,
                           contentPadding: EdgeInsets.zero,
@@ -269,6 +273,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         },
                         controller: _heightController,
                         keyboardType: TextInputType.number,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(RegExp(r'[0-9]')), // Allow only digits
+                        ],                        
                         decoration: InputDecoration(
                           isDense: true,
                           contentPadding: EdgeInsets.zero,
@@ -316,6 +323,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         },
                         controller: _weightController,
                         keyboardType: TextInputType.number,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(RegExp(r'[0-9]')), // Allow only digits
+                        ],                         
                         decoration: InputDecoration(
                           isDense: true,
                           contentPadding: EdgeInsets.zero,

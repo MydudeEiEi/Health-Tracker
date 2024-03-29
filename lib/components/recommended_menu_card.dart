@@ -142,7 +142,7 @@ class RecommendedMenuCard extends StatelessWidget {
         title = "SODIUM";
         value = food.sodium;
         barColor = MyColors.sodiumCard;
-        unit = "MG";
+        unit = "G";
         break;
     }
 

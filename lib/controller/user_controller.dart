@@ -20,31 +20,7 @@ class UserController {
     final userCredential = await FirebaseAuth.instance.signInWithCredential(
       credential,
     );
-
-    // Save the user's email and uid to Firestore after signing in
-    saveUserToFirestore(userCredential.user);
-
     return userCredential.user;
-  }
-
-  // Create a separate method for saving the user's email and uid to Firestore
-  static Future<void> saveUserToFirestore(User? user) async {
-    // Get the user's email and uid
-    String? email = user?.email;
-    String? uid = user?.uid;
-
-    // Create a reference to the users collection in Firestore
-    CollectionReference users = FirebaseFirestore.instance.collection('users');
-
-    // Save the user's email and uid to Firestore using their uid as the document id
-    users
-        .doc(uid)
-        .set({
-          'email': email,
-          'uid': uid,
-        })
-        .then((value) => print("User added"))
-        .catchError((error) => print("Failed to add user: $error"));
   }
 
   static Future<bool> signOutConfirmation(BuildContext? context) async {

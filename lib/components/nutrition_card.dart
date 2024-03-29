@@ -50,7 +50,7 @@ class NutritionCard extends StatelessWidget {
         _backgroundColor = MyColors.sodiumCard;
         _iconName = "sodium";
         _cardLable = "SODIUM";
-        _cardDetail = "${data.sodium} MG";
+        _cardDetail = "${data.sodium} G";
         break;
     }
   }
