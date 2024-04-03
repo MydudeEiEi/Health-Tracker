@@ -8,24 +8,10 @@ import 'package:health_tracker/repository/nutrition_history_repository.dart';
 import 'package:health_tracker/repository/user_information_repository.dart';
 
 class HomeController {
-  final repository = HealthRepository();
   final NutritionHistoryRepository nutritionHistoryRepository =
       NutritionHistoryRepository();
   final UserInformationRepository userInformationRepository =
       UserInformationRepository();
-  final HealthRepository healthRepository = HealthRepository();
-  // Future<void> getDataFirebase() async {
-  //   final movieRef = FirebaseFirestore.instance
-  //     .collection('movies')
-  //     .withConverter<Movie>(
-  //       fromFirestore: (snapshots, _) => Movie.fromJson(snapshots.data()!),
-  //       toFirestore: (movie, _) => movie.toJson());
-
-  //   final movies = await movieRef.get();
-  //   print(movies.docs.map((e) => e.data()).toList());
-
-  // }
-
   Future<NutritionHistory> getUserNutritionHistory(
       DateTime selectedDate) async {
     final String userId = UserController.user?.uid ?? '';
@@ -39,18 +25,7 @@ class HomeController {
       return newData;
     }
   }
-
-  // final bloodGlucoses = ValueNotifier(<BloodGlucose>[]);
-  // Future<void> getData() async {
-  //   bloodGlucoses.value = await repository.getBloodGlucose();
-  //   print(bloodGlucoses.value);
-  // }
-
   Future<UserInformation> getUserInformationByUserUid(String userId) async {
     return userInformationRepository.getUserInformationByUserUid(userId);
-  }
-
-  Future<void> test() {
-    return healthRepository.getBloodGlucose();
   }
 }

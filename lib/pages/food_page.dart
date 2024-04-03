@@ -149,7 +149,7 @@ class _FoodPageState extends State<FoodPage> {
                               Navigator.of(context).pop(),
                               ScaffoldMessenger.of(context).showSnackBar(
                                   mySnackBar(SnackBarType.success,
-                                      "Selected food successfully!",
+                                      "Recorded nutrition successfully!",
                                       textStyle: const TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold)))

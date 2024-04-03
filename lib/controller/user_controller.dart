@@ -32,14 +32,7 @@ class UserController {
           return AlertDialog(
             title: Text("Logout Confirmation"),
             content: Text("Do you want to logout?"),
-            actions: [
-              TextButton(
-                  onPressed: () => Navigator.of(context).pop(false),
-                  child: Text("No")),
-              TextButton(
-                  onPressed: () => Navigator.of(context).pop(true),
-                  child: Text("Yes")),
-            ],
+      
           );
         });
 
